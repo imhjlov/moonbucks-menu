@@ -45,6 +45,21 @@ const removeMenu = (e) => {
   }
 };
 
+const soldoutMenu = (e) => {
+  let soldoutState = true;
+  const clickedMenuItem = e.target.closest("li");
+  if (!clickedMenuItem.classList.contains("sold-out")) {
+    clickedMenuItem.classList.add("sold-out");
+    soldoutState = true;
+    return;
+  }
+  if (clickedMenuItem.classList.contains("sold-out")) {
+    clickedMenuItem.classList.remove("sold-out");
+    soldoutState = false;
+    return;
+  }
+  console.log(clickedMenuItem.classList);
+};
 
 espressoMenuList.addEventListener("click", (e) => {
   if (e.target.classList.contains("menu-edit-button")) {
@@ -52,6 +67,9 @@ espressoMenuList.addEventListener("click", (e) => {
   }
   if (e.target.classList.contains("menu-remove-button")) {
     removeMenu(e);
+  }
+  if (e.target.classList.contains("menu-sold-out-button")) {
+    soldoutMenu(e);
   }
 });
 
